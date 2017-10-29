@@ -1,0 +1,21 @@
+<ion-view title="Pattern Sets" id="page3">
+  <ion-nav-title>
+    Pattern Sets
+    <i class = "icon ion-plus" style = "float:right" ng-click = "addSet()"></i>
+  </ion-nav-title>
+  <ion-content padding="true" class="has-header" ng-show = "loaded">
+    <ion-list id="patternSets-list1" ng-repeat="set in sets track by $index" on-hold="$parent.$parent.deleting=!$parent.$parent.deleting">
+      <ion-item style = "color: {{highlight(set)}}" ng-click = "clickOn(set)">{{set.name}}
+        <ion-option-button ng-click = "sendSet($index)">
+          <i class = "icon ion-android-send"></i>
+        </ion-option-button>
+        <ion-option-button ng-click = "editName($index)">
+          <i class = "icon ion-edit"></i>
+        <ion-option-button ng-click = "deleteSet($index)">
+          <i class = "icon ion-trash-b"></i>
+        </ion-option-button>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-view>

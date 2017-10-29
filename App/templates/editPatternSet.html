@@ -1,0 +1,39 @@
+<ion-view title="Edit Pattern Set" id="page5">
+  <ion-content overflow-scroll = "true" padding="true" class="has-header">
+    <ion-list id="editPatternSet-list3">
+      <ion-item class="item-divider"> Pattern Set: {{editSet.name}}</ion-item>
+      <ion-item class="range range-positive">Delay {{digits(editSet.delay,4)}}
+        <input type="range" ng-model="editSet.delay" min="1" max="300" step="1">
+      </ion-item>
+      <label class="item item-select">
+        <span class="input-label" ng-model="editSet.audio_mode">Audio Mode</span>
+        <select>
+          <option>None</option>
+          <option>Pattern Sounds</option>
+          <option>Bluetooth</option>
+          <option>Dual</option>
+        </select>
+      </label>
+                </ion-list>
+      <ion-item class="item-divider" id="editPatternSet-list-item-divider7">Patterns
+        <i style = "float:right" ng-click = "addPattern()" class = "icon ion-plus"></i>
+      </ion-item>
+
+      <ion-list show-reorder = "reordering" can-swipe = "true" >
+        <ion-item ng-click = "clickOn($index)" style = "height:50px;" on-hold = "$parent.$parent.reordering=!$parent.$parent.reordering" ng-repeat = "pat in editSet.patterns track by $index">
+          {{pat.name}}
+          <div item-content ng-repeat = "col in pat.colors track by $index" style = "float:right; height:20px;">
+            <div item-content style = "height:100%; width: 50px; border: 1px solid black; background-color: #{{col}}">
+            </div>
+          </div>
+          <ion-option-button class = "button-assertive" ng-click = "deletePat($index)">
+            <i class = "icon ion-trash-b"></i>
+          </ion-option-button>
+          <ion-reorder-button class = "ion-navicon" on-reorder = "reorderPatterns($fromIndex, $toIndex)">
+          </ion-reorder-button>
+        </ion-item>
+
+      </ion-list>
+    <a ng-click = "doneEditing()" id="editPatternSet-button37" class="button button-positive button-block">Done</a>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,41 @@
+<ion-view title="Settings" id="page2">
+  <ion-content padding="true" class="has-header">
+    <ion-list>
+      <ion-item class="range range-positive">Brightness
+        <input type="range" ng-model="parameters.brightness" min="0" max="255" step="1">
+          <i class = "icon ion-android-send" ng-click = "sendBrightness()"></i>
+      </ion-item>
+      <ion-item class="range range-positive">Volume
+        <input type="range" ng-model="parameters.volume" min="0" max="255" step="1">
+          <i class = "icon ion-android-send" ng-click = "sendVolume()"></i>
+      </ion-item>
+    </ion-list>
+    <div id="settings-markdown1" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">
+        <strong>Patterns</strong>
+      </p>
+    </div>
+    <div id="settings-button-bar2" class="button-bar">
+      <button id="settings-button11" ng-click = "patPrevious()" class="button button-positive button-block" disabled>Previous</button>
+      <button id="settings-button12" ng-click = "patPausePlay()" class="button button-positive button-block">{{patChoice()}}</button>
+      <button id="settings-button13" ng-click = "patNext()" class="button button-positive button-block" disabled>Next</button>
+    </div>
+    <div id="settings-markdown3" style="text-align:center;" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">
+        <strong>Audio</strong>
+      </p>
+    </div>
+    <ion-list>
+      <label class="item item-select" id="settings-select2">
+        <span class="input-label">Mode</span>
+        <select ng-model = "parameters.audioMode" ng-options = "mode.code as mode.name for mode in audioModes" ng-change = "sendMode()">
+        </select>
+      </label>
+    </ion-list>
+    <div id="settings-button-bar3" class="button-bar">
+      <button id="settings-button17" class="button button-positive button-block" ng-click = "audPrevious()">Previous</button>
+      <button id="settings-button18" class="button button-positive button-block" ng-click = "audPausePlay()">{{audChoice()}}</button>
+      <button id="settings-button19" class="button button-positive button-block" ng-click = "audNext()">Next</button>
+    </div>
+  </ion-content>
+</ion-view>
